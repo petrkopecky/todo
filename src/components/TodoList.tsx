@@ -7,20 +7,19 @@ export default function TodoList() {
   const [todoList, setTodoList] = useState<Array<ITodoItem>>(
     new Array<ITodoItem>()
   );
-  //let todoList: Array<ITodoItem> = new Array<ITodoItem>();
-  //todoList.push({ id: "1", text: "t1", finished: false });
+  const [lastId, setLastId] = useState<number>(0);
 
   function onAddTask(taskText: string) {
+    let id: number = lastId + 1;
     console.log(`onAddTask ${taskText}`);
-    todoList.push({ id: "1", text: taskText, finished: false });
+    todoList.push({ id: id, text: taskText, finished: false });
     setTodoList([...todoList]);
+    setLastId(id);
   }
 
   function onTaskFinished(todoItem: ITodoItem) {
     console.log(`onTaskFinished ${todoItem.id}`);
-    //todoList.find((element) => element.id === id).finished = true;
     todoItem.finished = true;
-    //todoList.push({ id: "1", text: taskText, finished: false });
     setTodoList([...todoList]);
   }
 
@@ -29,13 +28,7 @@ export default function TodoList() {
       console.log("ss");
       return (
         <li key={todoItem.id}>
-          <Todo
-            //id={todoItem.id}
-            //text={todoItem.text}
-            //finished={todoItem.finished}
-            todoItem={todoItem}
-            onTaskFinished={onTaskFinished}
-          />
+          <Todo todoItem={todoItem} onTaskFinished={onTaskFinished} />
         </li>
       );
     });
