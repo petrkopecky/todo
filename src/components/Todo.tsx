@@ -4,10 +4,7 @@ interface FormProps {
   onTaskFinished: (todoItemId: ITodoItem) => void;
 }
 
-export default function Todo({
-  todoItem, //: { id, text, finished },
-  onTaskFinished,
-}: FormProps) {
+export default function Todo({ todoItem, onTaskFinished }: FormProps) {
   console.log(todoItem);
   function handleOnClick(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -19,7 +16,7 @@ export default function Todo({
     <>
       <p>{todoItem.id}</p>
       <p>{todoItem.text}</p>
-      <p>f{todoItem.finished ? "ff" : "nn"}</p>
+      <p>{todoItem.finished ? "finished" : "not finished"}</p>
       <button onClick={handleOnClick}>set task finished</button>
     </>
   );

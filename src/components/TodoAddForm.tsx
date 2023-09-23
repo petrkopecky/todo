@@ -23,7 +23,7 @@ export default function TodoAddForm({ onSubmit }: FormProps) {
 
   return (
     <div>
-      <h1>Add a todo</h1>
+      <h2>Add a todo</h2>
       <form onSubmit={handleOnSubmit}>
         <label>
           task:
