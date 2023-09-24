@@ -2,7 +2,7 @@ import { ITodoItem } from "../model/ITodoItem";
 import { useState } from "react";
 import TodoAddForm from "./TodoAddForm";
 import Todo from "./Todo";
-
+import "./Todo.css";
 export default function TodoList() {
   const [todoList, setTodoList] = useState<Array<ITodoItem>>(
     new Array<ITodoItem>()
@@ -17,18 +17,17 @@ export default function TodoList() {
     setLastId(id);
   }
 
-  function onTaskFinished(todoItem: ITodoItem) {
-    console.log(`onTaskFinished ${todoItem.id}`);
-    todoItem.finished = true;
+  function onTaskFinish(todoItem: ITodoItem) {
+    console.log(`onTaskFinish ${todoItem.id}`);
+    todoItem.finished = !todoItem.finished;
     setTodoList([...todoList]);
   }
 
   function renderTodoList(): JSX.Element[] {
     let todoListLies: JSX.Element[] = todoList.map((todoItem: ITodoItem) => {
-      console.log("ss");
       return (
-        <li key={todoItem.id}>
-          <Todo todoItem={todoItem} onTaskFinished={onTaskFinished} />
+        <li key={todoItem.id} className="listItem">
+          <Todo todoItem={todoItem} onTaskFinish={onTaskFinish} />
         </li>
       );
     });
@@ -36,7 +35,7 @@ export default function TodoList() {
   }
   return (
     <div>
-      <h1>Todo</h1>
+      <h1>Todo List</h1>
       <TodoAddForm onSubmit={onAddTask} />
       <ul className="list">{renderTodoList()}</ul>
     </div>

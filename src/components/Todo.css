@@ -1,0 +1,13 @@
+.list {
+  list-style-type: none;
+  margin: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.listItem {
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  background-color: grey;
+}

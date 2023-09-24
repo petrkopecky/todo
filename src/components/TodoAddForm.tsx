@@ -19,6 +19,7 @@ export default function TodoAddForm({ onSubmit }: FormProps) {
 
     console.log(`handleOnSubmit ${formData.taskText}`);
     onSubmit(formData.taskText);
+    setFormData({ ...formData, taskText: "" });
   }
 
   return (
@@ -27,7 +28,12 @@ export default function TodoAddForm({ onSubmit }: FormProps) {
       <form onSubmit={handleOnSubmit}>
         <label>
           task:
-          <input type="text" name="task-text" onChange={handleTaskTextChange} />
+          <input
+            type="text"
+            name="task-text"
+            value={formData.taskText}
+            onChange={handleTaskTextChange}
+          />
         </label>
 
         <button type="submit">add</button>

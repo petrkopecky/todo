@@ -1,5 +1,5 @@
 export interface ITodoItem {
-    id: string;
+    id: number;
     text: string;
     finished: boolean;
   }

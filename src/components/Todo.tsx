@@ -1,23 +1,31 @@
 import { ITodoItem } from "../model/ITodoItem";
 interface FormProps {
   todoItem: ITodoItem;
-  onTaskFinished: (todoItemId: ITodoItem) => void;
+  onTaskFinish: (todoItemId: ITodoItem) => void;
 }
 
-export default function Todo({ todoItem, onTaskFinished }: FormProps) {
+export default function Todo({ todoItem, onTaskFinish }: FormProps) {
   console.log(todoItem);
-  function handleOnClick(
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) {
-    console.log(`handleOnClick`);
-    onTaskFinished(todoItem);
+
+  function handleOnFinishCheckbox(): void {
+    console.log(`handleCheckbox`);
+    onTaskFinish(todoItem);
   }
+
   return (
     <>
-      <p>{todoItem.id}</p>
-      <p>{todoItem.text}</p>
-      <p>{todoItem.finished ? "finished" : "not finished"}</p>
-      <button onClick={handleOnClick}>set task finished</button>
+      <p>id:{todoItem.id}</p>
+      <p>task:{todoItem.text}</p>
+
+      <input
+        type="checkbox"
+        id="checkbox"
+        checked={todoItem.finished}
+        onChange={handleOnFinishCheckbox}
+      />
+      <label htmlFor="checkbox">
+        {todoItem.finished ? "finished" : "not finished"}
+      </label>
     </>
   );
 }
