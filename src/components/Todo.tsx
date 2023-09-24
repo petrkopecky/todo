@@ -18,11 +18,11 @@ export default function Todo({ todoItem, onTaskFinish }: FormProps) {
       <p>task:{todoItem.text}</p>
       <input
         type="checkbox"
-        id="checkbox"
+        id={"checkbox" + todoItem.id}
         checked={todoItem.finished}
         onChange={handleOnFinishCheckbox}
       />
-      <label htmlFor="checkbox">
+      <label htmlFor={"checkbox" + todoItem.id}>
         {todoItem.finished ? "finished" : "not finished"}
       </label>
     </>
