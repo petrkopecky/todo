@@ -16,7 +16,6 @@ export default function Todo({ todoItem, onTaskFinish }: FormProps) {
     <>
       <p>id:{todoItem.id}</p>
       <p>task:{todoItem.text}</p>
-
       <input
         type="checkbox"
         id="checkbox"
